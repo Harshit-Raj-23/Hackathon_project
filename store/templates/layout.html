@@ -1,0 +1,742 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>
+        {% block title %}
+            Home
+        {% endblock %}
+    </title>
+
+    <style type="text/css">
+
+        body{
+            background-color:rgb(57, 18, 53);
+            color: whitesmoke;
+        }
+
+    /* -----------------HEADER------------------ */
+
+        {% comment %} 
+        header{
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            margin-right: 15px;
+            font-weight: 550;
+            color: rgb(82, 82, 82);
+        }
+
+        .card_name{
+            background-color: red;
+            color: white;
+            display: inline-block;
+            width: 10px;
+            text-align: center;
+            border-radius: 15px;
+        }
+        nav span{
+            margin-right: 15px;
+            font-size: medium;
+            
+        }
+        .brand_title{
+            font-weight: bold;
+            font-size: xx-large;
+            
+        }
+        
+        .bi-lightning-charge-fill{
+            color: orange;
+            font-size: medium;
+        } 
+        {% endcomment %}
+
+    /* --------------------HEADER2------------- */
+
+        .navbar-brand {
+            font-size: 3.5rem;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 20px;
+        }
+        .icons i {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .navbar {
+            justify-content: space-between;
+        }
+
+        /* --------------------------------------------- */
+
+        {% block section_style %}
+        /* -----------------------choooseee-------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+          }
+            /* body {
+                background-color: #E6E6FA;
+                min-height: 100vh;
+            } */
+          .container {
+            width: 100%;
+            overflow: hidden;
+          }
+      
+        /* Initial mood section */
+          .mood-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #E6E6FA, #fff);
+          }
+      
+          h1 {
+            color: black;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+          }
+      
+          .button-container {
+            display: flex;
+            gap: 2rem;
+          }
+         
+          .button-container a{
+            text-decoration: none;
+          }
+      
+          .mood-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+          }
+      
+          .mood-btn:hover {
+                  transform: scale(1.1);
+            }
+      
+             /* Styling Section */
+             .styling-section {
+                 height: 100vh;
+                 position: relative;
+             }
+      
+             .banner-container {
+                 height: 100%;
+                 overflow: hidden;
+             }
+      
+             .banner {
+                 width: 300%;
+                 height: 100%;
+                 display: flex;
+                 animation: slide 20s infinite linear;
+             }
+      
+             .banner img {
+                 width: 33.33%;
+                 height: 100%;
+                 object-fit: cover;
+             }
+      
+              @keyframes slide {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-66.66%); }
+              }
+      
+              .styling-content {
+                  position: absolute;
+                  top: 50%;
+                  left: 10%;
+                  transform: translateY(-50%);
+                  color: white;
+                  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+              }
+      
+              .upload-btn {
+                  position: absolute;
+                  bottom: 10%;
+                  right: 10%;
+                  padding: 1rem 2rem;
+                  background: black;
+                  color: white;
+                  border: none;
+                  border-radius: 25px;
+                  cursor: pointer;
+                  transition: transform 0.3s;
+              }
+      
+              .upload-btn:hover {
+                  transform: scale(1.1);
+              }
+        {% endblock %}
+
+        /* -------------------FOOTER--------------------- */
+        footer{            
+            background-color: rgb(3, 3, 13);         
+        }
+
+        ol{
+            list-style: none;   
+        }
+
+        li{
+            color: rgb(183, 173, 173);
+            font-size: medium;
+            line-height: 30px;
+        }
+
+        .last{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-head{
+            font-weight: bold;
+            color: whitesmoke;
+            margin-bottom: 20px;
+        }
+        .left-footer{
+            font-weight: bold;
+            font-size: 25px;
+            margin-top: 30px;
+            color: white;
+        }
+        .logo{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        h1{
+            text-align: center;
+            color: white;
+            font-size: x-large;
+            padding-top: 100px;
+            padding-bottom: 10px;
+        }
+
+
+        .middle{
+            display: flex;
+            color: white;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+
+        .email{
+            color: gray;
+            margin-right: 20px;
+            border: 1px solid rgb(2, 1, 1);
+            padding: 19px;
+            background-color: rgb(35, 33, 33);
+            width: 300px;
+        }
+
+        .subscribe{
+            font-size: 15px;
+            margin-right: 30px;
+            border: 1px solid rgb(12, 2, 2);
+            padding: 20px;
+            padding-left: 30px;
+            background-color: rgb(86, 80, 80);
+            width: 120px;
+        }
+
+
+        .main{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            font-size: small;
+            font-weight: 550;
+            color: rgb(91, 88, 88);
+            background-color: rgb(248, 250, 250);
+            padding: 20px;
+            width: 1350px;
+
+        }
+
+        .side-head{
+            color: grey;
+        }
+        div span{
+            margin-right: 10px;
+        }
+        .left-first-header{
+            margin-right: 200px;
+        }
+
+
+        .search-bar{
+            border: none;
+            width: 250px;
+            border-radius: 12px;
+            padding: 10px;
+            padding-left: 60px;
+            
+          }
+        .bi-search {
+                    color: black;
+                    position: absolute;
+                    margin-left: 20px;            
+          }
+        
+         
+        
+        .container {
+            padding: 2rem;
+            text-align: center;
+           
+        }
+        
+        .mood-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 0 20px #0e0e0e;
+            background-color: rgb(245, 209, 234);
+        }
+        
+        .neon-text {
+            color:rgb(64, 22, 35);
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .neon-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            color: #e96a92;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: transparent;
+            border: 2px solid #e96a92;
+            border-radius: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .neon-btn:hover {
+            background: #f5c5d4;
+            color: #000;
+            box-shadow: 0 0 10px #d2cfcf,
+                        0 0 30px #eae5e7,
+                        0 0 50px rgb(212, 210, 210);
+            text-shadow: none;
+        }
+        
+        .neon-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #e96a92,
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .neon-btn:hover::before {
+            left: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            {% comment %} .neon-text {
+                
+                font-size: 5rem;
+            } {% endcomment %}
+            
+            .neon-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+            header{
+                background-color:rgb(255, 255, 255);
+                color: black;
+                border: none;
+                border-radius: 30px;
+                
+                
+                
+                
+            } 
+            nav span{
+                display: flex;
+                justify-content: space-between;
+                
+            }
+        
+            nav{
+                margin: 30px;
+                background-color: rgb(244, 219, 219);
+            }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--header starts-->
+    {% comment %} <hr>
+    <header class="main">
+        
+        <div class="left-first-header">
+            <span class="bi bi-truck">  &nbsp; FREE shipping worldwide &nbsp;</span>
+            <span class="bi bi-flag">  United States <span class="bi bi-chevron-down"></span></span>
+            <span>USD<span class="bi bi-chevron-down"></span></span>
+            <span>English<span class="bi bi-chevron-down"></span></span>
+        </div>
+
+    
+        <div >
+            <span>Shipping</span>
+            <span>FAQ</span>
+            <span>Contact</span>
+        </div>
+
+        <div class="side-head">
+            <span class="bi bi-facebook"></span>
+            <span class="bi bi-twitter"></span>
+            <span class="bi-instagram"></span>
+            <span class="bi bi-youtube"></span>
+        </div>
+ 
+    </header> {% endcomment %}
+
+    <!--header ends-->
+
+
+    <!--nav starts-->
+{% comment %} <header>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom py-3">
+    <div class="container position-relative">
+        <!-- Dropdown Menus -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <!-- Dropdown for Tops -->
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTops" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-truck">  &nbsp; FREE shipping worldwide &nbsp;</i>
+            </a>
+            <ul  aria-labelledby="navbarDropdownTops">
+                
+            </ul>
+            </li>
+            <!-- Dropdown for Shoes & Accessories -->
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShoes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                
+            </a>
+            <ul>
+                
+            </ul>
+            </li>
+            <!-- Dropdown for Bottoms -->
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBottoms" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Bottoms
+            </a>
+
+            </li>
+        </ul>
+        </div>
+
+        <!-- Company Name Centered -->
+        <a class="navbar-brand" href="#">INSTYLE</a>
+
+        <!-- Icons -->
+        <div class="icons">
+            <input type="search" class="search-bar" placeholder="Search Clothings" /><i class="bi bi-search"></i>
+            <i class="bi bi-person"></i>
+            <i class="bi bi-heart"></i>
+            <i class="bi bi-bag"></i>
+        </div>
+    </div>
+</nav>
+
+<!-- nav ends -->
+</header> {% endcomment %}
+<header>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom py-3">
+        <div class="container position-relative">
+            <!-- Free Shipping Notice -->
+            <div class="shipping-notice">
+                <i class="bi bi-truck">  &nbsp; FREE shipping worldwide &nbsp;</i>
+                <i></i>
+            </div>
+            
+            
+            <!-- Company Name Centered -->
+            <a class="navbar-brand" href="#">INSTYLE</a>
+            
+            <!-- Icons -->
+            <div class="icons">
+                <input type="search" class="search-bar" placeholder="Search Clothings" />
+                <i class="bi bi-search"></i>
+                <i class="bi bi-person"></i>
+                <i class="bi bi-heart"></i>
+                <i class="bi bi-bag"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% block section %}
+    <!-- choose -->
+    <section>
+        <div class="container">
+        <!-- Initial Mood Section -->
+        <div class="mood-section">
+            <h1 class="neon-text">What's your mood today?</h1>
+            <div class="button-container">
+                <a href="{% url 'styling' %}" class="mood-btn">Styling</a>
+                <a href="#shopping" class="mood-btn">Buying</a>
+            </div>
+        </div>
+
+        <!-- Shopping Section -->
+        <div id="shopping" class="shopping-section">
+            <div class="container my-5">
+            <h2 class="text-center mb-4">Our Collections</h2>
+            <div class="row g-4">
+                <!-- Shirt Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/shirt.jpg" class="card-img-top" alt="Shirt Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Shirt Collection</b></p>
+                    <p>Soft cotton tee for everyday comfort</p>
+                    </div>
+                </div>
+                </div>
+                <!-- T-Shirt Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/t-shirt.jpg" class="card-img-top" alt="T-Shirt Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>T-Shirt Collection</b></p>
+                    <p>Stylish,comfy cotton T-shirts for everyday wear</p>
+                    </div>
+                </div>
+                </div>
+                <!-- jeans Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/jeansm.jpg" class="card-img-top" alt="Sandal Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Jeans Collection</b></p>
+                    <p>Timeless flex for every fit</p>
+                    </div>
+                </div>
+                </div>
+                <!-- jackets Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/jackets.jpg" class="card-img-top" alt="Sneaker Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Jackets Collection</b></p>
+                    <p>Versatile jackets combining comfort and style for any season.</p>
+                    </div>
+                </div>
+                </div>
+                <!-- ethnic Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/ethnic.jpg" class="card-img-top" alt="Ankle Boot Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Ethnic Collection</b></p>
+                    <p>Elegant ethnic wear that blends tradition with modern style</p>
+                    </div>
+                </div>
+                </div>
+                <!-- Trouser Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/Trouser.jpg" class="card-img-top" alt="Trouser Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Trouser Collection</b></p>
+                    <p>Classic trousers designed for comfort and effortless style</p>
+                    </div>
+                </div>
+                </div>
+                <!-- Pullover Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/pullover.jpg" class="card-img-top" alt="Pullover Collection">
+                    <div class="card-body text-center">
+                    <p class="./images/pullover.png"><b>Pullover Collection</b></p>
+                    <p>Cozy pullovers crafted for warmth and style</p>
+                    </div>
+                </div>
+                </div>
+                <!-- Dress Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/dress.jpg" class="card-img-top" alt="Dress Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Dress Collection</b></p>
+                    <p>Chic and elegant dresses to elevate your style effortlessly.</p>
+                    </div>
+                </div>
+                </div>
+                <!-- Coat Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/coat.jpg" class="card-img-top" alt="Coat Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Coat Collection</b></p>
+                    <p>Boss energy wrapped in layers.</p>
+                    </div>
+                </div>
+                </div>
+                <!-- Bag Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/formal.jpg" class="card-img-top" alt="Bag Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Formal Collection</b></p>
+                    <p>Sharp, sophisticated formals for a polished look.</p>
+                    </div>
+                </div>
+                </div>
+                <!-- Hat Collection -->
+                <div class="col-6 col-md-4 col-lg-3">
+                <div class="card collection-card">
+                    <img src="./media/images/shots.jpg" class="card-img-top" alt="Hat Collection">
+                    <div class="card-body text-center">
+                    <p class="card-title"><b>Shorts Collection</b></p>
+                    <p>Freedom for the legs, chill for the vibes.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+        </div>    
+    </section>
+
+
+{% endblock %}
+
+
+
+    <!-- FOOTER -->
+    <footer>
+
+    <h1>Want style Ideas and Treats?</h1>  
+
+            <div class="middle">
+                <input type="email" class="email" placeholder="Enter Email" >
+                <span class="subscribe">Subscribe</span>
+            </div>
+
+
+
+    <div class="last">
+        <ol>
+            <li class="left-footer">Instyle</li>
+        <span class="logo">
+            <LI class="bi bi-facebook"></LI>
+            <LI class="bi bi-youtube"></LI>
+            <LI class="bi bi-instagram"></LI>
+            <LI class="bi bi-twitter"></LI>
+        </span>
+        </ol>
+
+        <OL>
+            <li class="footer-head">Shop Vibes</li>
+                            <li>King</li>
+                            <li>Queen</li>
+                            <li>Gift Funds</li>
+                            <li>Wallet Check</li>
+        </OL> 
+
+        <OL>
+            <li class="footer-head">The Tea</li>
+            <li>Hit Us Up</li>
+            <li>Our Story</li>
+            <li>Real talk</li>
+            <li>Privacy Unlocked</li>
+        </OL>
+
+
+        <OL>
+            <li class="footer-head">Got Your Back</li>
+            <li>Money Moves</li>
+            <li>Delivery Status</li>
+            <li>Where's My Order At?</li>
+            <li>Quick Facts</li>
+            <li>Support Squad</li>
+            <li>Discount Hacks</li>
+        </OL>
+
+
+        <OL>
+            <li class="footer-head">Ground Rules</li>
+            <li>Basic Rules</li>
+            <li>Safe Space</li>
+            <li>Low-key Policy</li>
+            <li>Site Map Fr Fr</li>
+            <li>Return The Goods</li>
+
+    </div>         
+            
+    </footer>
+
+</body>
+</html>

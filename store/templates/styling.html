@@ -1,0 +1,413 @@
+{% extends "layout.html" %}
+
+
+{% block section_style %}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color:rgb(234, 220, 203);
+    
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+/* Style Your Wardrobe Section */
+.styling-section {
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('/api/placeholder/1920/1080');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color:rgb(252, 143, 177);
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.styling-content {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.styling-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.styling-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.start-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(45deg, #000, #333);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Upload Page */
+.upload-page {
+    min-height: 100vh;
+    {% comment %} background: linear-gradient(135deg, #E6E6FA, #fff); {% endcomment %}
+    padding: 2rem;
+    transition: opacity 0.3s ease, display 0.3s ease;
+    background-color: rgb(126, 69, 85);
+    border: none;
+    border-radius: 20px;
+    
+}
+
+.category-selection {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    
+}
+
+.category-title {
+    font-size: 2.5rem;
+    color: whitesmoke;
+    text-align: center;
+    margin-bottom: 2rem;
+    
+}
+
+.category-buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+.category-btn {
+    padding: 1.5rem 4rem;
+    font-size: 1.2rem;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+}
+
+.category-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.upload-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.upload-section h2 {
+    font-size: 2rem;
+    color: whitesmoke;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.upload-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.upload-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(238, 10, 10, 0.1);
+}
+
+.upload-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.upload-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.upload-input {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+.upload-label:hover {
+    background: #555;
+}
+
+.submit-btn {
+    display: block;
+    width: fit-content;
+    margin: 4rem auto;
+    padding: 1rem 4rem;
+    background: linear-gradient(45deg, #000, #333);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Processing overlay */
+.processing-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#processing:target ~ .processing-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#processing:target ~ .upload-page {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#result:target ~ .result-page {
+    display: block;
+}
+
+#result:target ~ .processing-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#result:target ~ .upload-page {
+    display: none;
+}
+
+.processing-text {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Result page */
+.result-page {
+    display: none;
+    min-height: 100vh;
+    background: white;
+}
+
+/* Auto-redirect using CSS animation */
+#processing:target ~ .redirect {
+    animation: redirect 3s forwards;
+}
+
+@keyframes redirect {
+    0%, 99% {
+        opacity: 0;
+        pointer-events: none;
+    }
+    100% {
+        opacity: 0;
+        pointer-events: all;
+    }
+}
+
+
+.redirect {
+    opacity: 0;
+    position: fixed;
+}
+
+
+
+{% endblock %}
+
+
+{% block section %}
+
+    <!-- Hidden anchors for state management -->
+    <div id="processing"></div>
+    <div id="result"></div>
+
+    <div class="container">
+        <!-- Styling Section -->
+        <section class="styling-section">
+            <div class="styling-content">
+                <h2>Style Your Wardrobe</h2>
+                <p>Create the perfect outfit combinations with your existing clothes</p>
+                <a href="#upload" class="start-btn">Start Styling</a>
+            </div>
+        </section>
+
+        <!-- Upload Page -->
+        <section  class="upload-page">
+            <div class="category-selection">
+                <h1 class="category-title">Choose Your Category</h1>
+                <div class="category-buttons">
+                    <a href="#top-section" class="category-btn">TOP</a>
+                    <a href="#bottom-section" class="category-btn">BOTTOM</a>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <h2>Top Wear Collection</h2>
+                <div class="upload-grid">
+                    <div class="upload-item">
+                        <div class="upload-icon">👕</div>
+                        <p>T-Shirts</p>
+                        <input type="file" id="tshirt-upload" class="upload-input" accept="image/*">
+                        <label for="tshirt-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">🧥</div>
+                        <p>Hoodies</p>
+                        <input type="file" id="hoodie-upload" class="upload-input" accept="image/*">
+                        <label for="hoodie-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">👚</div>
+                        <p>Sweatshirts</p>
+                        <input type="file" id="sweatshirt-upload" class="upload-input" accept="image/*">
+                        <label for="sweatshirt-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">👗</div>
+                        <p>Dresses</p>
+                        <input type="file" id="dress-upload" class="upload-input" accept="image/*">
+                        <label for="dress-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">👔</div>
+                        <p>Shirts</p>
+                        <input type="file" id="shirt-upload" class="upload-input" accept="image/*">
+                        <label for="shirt-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">🧥</div>
+                        <p>Jackets</p>
+                        <input type="file" id="jacket-upload" class="upload-input" accept="image/*">
+                        <label for="jacket-upload" class="upload-label">Upload Image</label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottom-section" class="upload-section">
+                <h2>Bottom Wear Collection</h2>
+                <div class="upload-grid">
+                    <div class="upload-item">
+                        <div class="upload-icon">👖</div>
+                        <p>Jeans</p>
+                        <input type="file" id="jeans-upload" class="upload-input" accept="image/*">
+                        <label for="jeans-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">👖</div>
+                        <p>Trousers</p>
+                        <input type="file" id="trouser-upload" class="upload-input" accept="image/*">
+                        <label for="trouser-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">👖</div>
+                        <p>Formal Pants</p>
+                        <input type="file" id="formal-pants-upload" class="upload-input" accept="image/*">
+                        <label for="formal-pants-upload" class="upload-label">Upload Image</label>
+                    </div>
+                    <div class="upload-item">
+                        <div class="upload-icon">🩳</div>
+                        <p>Shorts</p>
+                        <input type="file" id="shorts-upload" class="upload-input" accept="image/*">
+                        <label for="shorts-upload" class="upload-label">Upload Image</label>
+                    </div>
+                </div>
+                <a href="#processing" class="submit-btn">Submit</a>
+            </div>
+        </section>
+
+        <!-- Processing Overlay -->
+        <div class="processing-overlay">
+            <div class="processing-text">Processing...</div>
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Result Page -->
+        <div class="result-page"></div>
+
+        <!-- Auto-redirect element -->
+        <a href="#result" class="redirect"></a>
+    </div>
+
+{% endblock %}
